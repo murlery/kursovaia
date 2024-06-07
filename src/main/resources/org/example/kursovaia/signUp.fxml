@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="454.0" prefWidth="700.0" style="-fx-background-color: #000080;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.kursovaia.veiw.SignUpController">
+    <children>
+        <AnchorPane layoutY="90.0" prefHeight="349.0" prefWidth="700.0" style="-fx-background-color: #fafafa;">
+            <children>
+                <TextField fx:id="loginFild" layoutX="295.0" layoutY="14.0" prefHeight="26.0" prefWidth="335.0" promptText="Логин" style="-fx-background-color: #fafafa; -fx-border-color: silver; -fx-background-radius: 0;">
+                    <font>
+                        <Font size="11.0" />
+                    </font>
+                </TextField>
+                <PasswordField fx:id="passwordFild" layoutX="295.0" layoutY="249.0" prefHeight="26.0" prefWidth="335.0" promptText="Пароль" style="-fx-background-color: #fafafa; -fx-border-color: silver; -fx-background-radius: 0;">
+                    <font>
+                        <Font size="11.0" />
+                    </font>
+                </PasswordField>
+            <PasswordField fx:id="passwordRepeatFild" layoutX="295.0" layoutY="281.0" prefHeight="26.0" prefWidth="335.0" promptText="Пароль" style="-fx-background-color: #fafafa; -fx-border-color: silver; -fx-background-radius: 0;">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </PasswordField>
+            <TextField fx:id="numberPhoneFild" layoutX="295.0" layoutY="47.0" prefHeight="26.0" prefWidth="335.0" promptText="+7(...) ...-..-.." style="-fx-background-color: #fafafa; -fx-border-color: silver; -fx-background-radius: 0;">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </TextField>
+            <Label fx:id="lognLable" layoutX="131.0" layoutY="14.0" prefHeight="26.0" prefWidth="142.0" text="Придумайте логин:" textFill="NAVY">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="numberPnoneLable" layoutX="81.0" layoutY="47.0" prefHeight="26.0" prefWidth="190.0" text="Введите номер телефона:" textFill="NAVY">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="passwordLable" layoutX="118.0" layoutY="249.0" prefHeight="26.0" prefWidth="151.0" text="Придумайте пароль:" textFill="NAVY">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="passwordRepeatLable" layoutX="131.0" layoutY="281.0" prefHeight="26.0" prefWidth="142.0" text="Повторите пароль:" textFill="NAVY">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="surnameFild" layoutX="295.0" layoutY="81.0" prefHeight="26.0" prefWidth="335.0" promptText="Фамилия" style="-fx-background-color: #fafafa; -fx-border-color: silver; -fx-background-radius: 0;">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </TextField>
+            <Label fx:id="surnameLable" layoutX="132.0" layoutY="81.0" prefHeight="26.0" prefWidth="142.0" text="Введите фамилию:" textFill="NAVY">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="nameFild" layoutX="295.0" layoutY="118.0" prefHeight="26.0" prefWidth="335.0" promptText="Имя" style="-fx-background-color: #fafafa; -fx-border-color: silver; -fx-background-radius: 0;">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </TextField>
+            <Label fx:id="nameLable" layoutX="173.0" layoutY="118.0" prefHeight="26.0" prefWidth="97.0" text="Введите имя:" textFill="NAVY">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="patronymicLable" layoutX="28.0" layoutY="152.0" prefHeight="26.0" prefWidth="242.0" text="Введите отчество (при наличии):" textFill="NAVY">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="patronymicFild" layoutX="295.0" layoutY="152.0" prefHeight="26.0" prefWidth="335.0" promptText="Отчество" style="-fx-background-color: #fafafa; -fx-border-color: silver; -fx-background-radius: 0;">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </TextField>
+            <Label fx:id="dateOfBirthLable" layoutX="93.0" layoutY="185.0" prefHeight="26.0" prefWidth="181.0" text="Введите дату рождения:" textFill="NAVY">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <RadioButton fx:id="manRadBtn" layoutX="295.0" layoutY="219.0" mnemonicParsing="false" text="муж" />
+            <RadioButton fx:id="womanRadBtn" layoutX="372.0" layoutY="219.0" mnemonicParsing="false" text="жен" />
+            <Label fx:id="nameLable1" layoutX="163.0" layoutY="214.0" prefHeight="26.0" prefWidth="108.0" text="Выберете пол:" textFill="NAVY">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+                <Button fx:id="signUpBtn" layoutX="410.0" layoutY="314.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="220.0" style="-fx-background-color: #FF0000; -fx-background-radius: 0;" text="зарегистрироваться" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="13.0" />
+                    </font>
+                </Button>
+            <DatePicker fx:id="dateOfBirthFild" layoutX="295.0" layoutY="185.0" prefHeight="26.0" prefWidth="335.0" promptText="_._._" />
+            </children>
+        </AnchorPane>
+        <Label layoutX="94.0" layoutY="24.0" prefHeight="39.0" prefWidth="329.0" text="ФЕДЕРАЦИЯ ДЗЮДО РОССИИ" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+        </Label>
+      <Button fx:id="backButton" layoutX="563.0" layoutY="17.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="122.0" style="-fx-background-color: #FF0000; -fx-background-radius: 0;" text="назад" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <ImageView fx:id="logoImg" fitHeight="73.0" fitWidth="83.0" layoutX="14.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@img/logo.png" />
+         </image>
+      </ImageView>
+
+    </children>
+</AnchorPane>
