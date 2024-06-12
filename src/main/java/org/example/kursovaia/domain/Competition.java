@@ -1,12 +1,18 @@
 package org.example.kursovaia.domain;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import org.example.kursovaia.data.DbWorker;
+
 public class Competition {
-    private String id;
-    private String level;
-    private String name;
-    private String timing;
-    private String ageCategory;
-    private String location;
+    protected String id;
+    protected String level;
+    protected String name;
+    protected String timing;
+    protected String ageCategory;
+    protected String location;
+    protected Repository repository;
 
     public Competition(String id, String level, String name, String timing, String ageCategory, String location) {
         this.id = id;
@@ -15,8 +21,19 @@ public class Competition {
         this.timing = timing;
         this.ageCategory = ageCategory;
         this.location = location;
+        this.repository = new DbWorker();
+    }
+    public Competition(){
+        this.repository = new DbWorker();
     }
 
+    public ArrayList<Competition> getAllList() {
+        try {
+            return repository.getAll();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 
     public String getId() {
@@ -41,5 +58,24 @@ public class Competition {
 
     public String getLocation() {
         return location;
+    }
+    // Метод для получения всех соревнований
+    public ArrayList<Competition> getAll() throws SQLException {
+        return repository.getAll();
+    }
+
+    // Метод для получения соревнований по дате
+    public ArrayList<Competition> getCompetitionsByDate() throws SQLException {
+        return repository.getCompetitionsByDate();
+    }
+
+    // Метод для получения соревнований по уровню
+    public ArrayList<Competition> getCompetitionsByLevel(String selectedLevel) throws SQLException {
+        return repository.getCompetitionsByLevel(selectedLevel);
+    }
+
+    // Метод для получения соревнований по уровню и дате
+    public ArrayList<Competition> getCompetitionsByLevelAndDate(String selectedLevel) throws SQLException {
+        return repository.getCompetitionsByLevelAndDate(selectedLevel);
     }
 }

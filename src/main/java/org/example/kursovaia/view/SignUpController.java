@@ -1,4 +1,4 @@
-package org.example.kursovaia.veiw;
+package org.example.kursovaia.view;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -81,6 +81,7 @@ public class SignUpController {
 
     @FXML
     private RadioButton womanRadBtn;
+private User user;
 
     @FXML
     void initialize() {
@@ -166,7 +167,7 @@ public class SignUpController {
                 return; // Прервать обработку
             }
             // Проверка уникальности логина
-            if (!isUniqueLogin(loginFild.getText())) {
+            if (!user.isUniqueLogin(loginFild.getText())) {
                 showErrorMessage("Логин уже занят");
                 return; // Прервать обработку
             }
@@ -188,22 +189,18 @@ public class SignUpController {
 
             String gender = womanRadBtn.isSelected() ? "женский" : "мужской"; // Get selected gender
             LocalDate dateOfBirth = dateOfBirthFild.getValue();
-            User user = new User(loginFild.getText(), numberPhoneFild.getText(),
+            user = new User(loginFild.getText(), numberPhoneFild.getText(),
                     nameFild.getText(), surnameFild.getText(),
                     patronymicFild.getText(), dateOfBirth,
                     gender, passwordFild.getText());
-            DbWorker.signUpUser(user);
+            user.signUpUser();
             openNewWindow("/org/example/kursovaia/mainWindow.fxml");
         });
         backButton.setOnAction(event -> {
             openNewWindow("/org/example/kursovaia/hello-view.fxml");
         });
     }
-    // Метод для проверки уникальности логина в БД
-    private boolean isUniqueLogin(String login) {
 
-        return DbWorker.isUniqueLogin(login);
-    }
     // Метод для проверки номера телефона
     private boolean isValidPhoneNumber(String phoneNumber) {
         // Пример регулярного выражения для российского номера телефона

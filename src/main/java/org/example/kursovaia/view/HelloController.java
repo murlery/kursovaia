@@ -1,4 +1,4 @@
-package org.example.kursovaia.veiw;
+package org.example.kursovaia.view;
 
 import java.io.IOException;
 import java.net.URL;
@@ -36,6 +36,7 @@ public class HelloController {
 
     @FXML
     private PasswordField passwordFild;
+    User user;
 
     @FXML
     void initialize() {
@@ -44,7 +45,14 @@ public class HelloController {
             String passwordText = passwordFild.getText().trim();//без пробелов
             if (!loginText.equals("") && !passwordText.equals("")){
                 try {
-                    loginUser(loginText,passwordText);
+                    user = new User();
+                    User user = new User();
+                    user.setLogin(loginText);
+                    user.setPassword(passwordText);
+                    if (user.loginUser(loginText,passwordText))
+                        openNewWindow("/org/example/kursovaia/mainWindow.fxml");
+                    else
+                        showErrorMessage("Вы не зарегистрированы");
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
@@ -56,25 +64,6 @@ public class HelloController {
         loginSignUpBtn.setOnAction(event -> {
             openNewWindow("/org/example/kursovaia/signUp.fxml");
         });
-
-    }
-
-    private void loginUser(String loginText, String passwordText) throws SQLException {
-        User user = new User();
-        user.setLogin(loginText);
-        user.setPassword(passwordText);
-        ResultSet resultSet = DbWorker.getUser(user);
-        int count = 0;
-        while (resultSet.next()){
-            count++;
-        }
-        if (count==1){
-            openNewWindow("/org/example/kursovaia/mainWindow.fxml");
-        }else{
-            showErrorMessage("Вы не зарегистрированы");
-        }
-
-
 
     }
 public void openNewWindow(String window){

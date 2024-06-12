@@ -15,6 +15,6 @@ module org.example.kursovaia {
     opens org.example.kursovaia to javafx.fxml;
     opens org.example.kursovaia.domain to javafx.base;
     exports org.example.kursovaia;
-    exports org.example.kursovaia.veiw;
-    opens org.example.kursovaia.veiw to javafx.fxml;
+    exports org.example.kursovaia.view;
+    opens org.example.kursovaia.view to javafx.fxml;
 }

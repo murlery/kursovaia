@@ -18,7 +18,6 @@ public class HelloApplication extends Application {
         stage.setTitle("Федерация дзюдо России");
         stage.setScene(new Scene(root,700,400));
         stage.show();
-        DbWorker.initDB();
     }
 
     public static void main(String[] args) {

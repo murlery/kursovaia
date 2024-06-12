@@ -1,18 +1,15 @@
-package org.example.kursovaia.veiw;
+package org.example.kursovaia.view;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -57,8 +54,10 @@ public class MainWindowController {
     private ObservableList<String> listLevels;
     private ObservableList<String> listDates;
     private ArrayList<Competition> competitionsList;
+    private Competition competition;
     @FXML
     void initialize() throws SQLException {
+        competition = new Competition();
         competitionsList= new ArrayList<>();
         listLevels = FXCollections.observableArrayList("Все уровни", "Областные", "Окружные", "Всероссийские","Международные");
         comboBoxLevel.setItems(listLevels);
@@ -150,8 +149,8 @@ searchButton.setOnAction(event ->{
             }
         }
         // Создание нового окна
-        Stage newWindow = new Stage();
-        newWindow.setTitle("Результаты поиска");
+        Stage searchResultsWindow = new Stage();
+        searchResultsWindow.setTitle("Результаты поиска");
         // Создание новой таблицы для результатов поиска
         TableView<Competition> searchTableView = new TableView<>();
         TableColumn<Competition, String> nameColumn = new TableColumn<>("Название");
@@ -176,9 +175,9 @@ searchButton.setOnAction(event ->{
         }
         // Создание сцены для нового окна
         Scene scene = new Scene(searchTableView, 850, 400);
-        newWindow.setScene(scene);
+        searchResultsWindow.setScene(scene);
         // Отображение нового окна
-        newWindow.show();
+        searchResultsWindow.show();
         // Очистка поля поиска
         searchField.setText("");
     }
@@ -196,13 +195,13 @@ searchButton.setOnAction(event ->{
             data.clear();
             // Получение данных из базы данных в соответствии с выбранными значениями
             if (selectedLevel.equals("Все уровни") && selectedDate.equals("Все турниры")) {
-                competitionsList = DbWorker.getAll();
+                competitionsList = competition.getAll(); // Вызов метода из объекта Competitions
             } else if (selectedLevel.equals("Все уровни") && selectedDate.equals("Предстоящие")) {
-                competitionsList = DbWorker.getCompetitionsByDate();
+                competitionsList = competition.getCompetitionsByDate(); // Вызов метода из объекта Competitions
             } else if (selectedDate.equals("Все турниры")) {
-                competitionsList = DbWorker.getCompetitionsByLevel(selectedLevel);
+                competitionsList = competition.getCompetitionsByLevel(selectedLevel); // Вызов метода из объекта Competitions
             } else {
-                competitionsList = DbWorker.getCompetitionsByLevelAndDate(selectedLevel);
+                competitionsList = competition.getCompetitionsByLevelAndDate(selectedLevel); // Вызов метода из объекта Competitions
             }
             data.addAll(competitionsList);
         } catch (SQLException e) {
@@ -211,7 +210,7 @@ searchButton.setOnAction(event ->{
     }
 
     private void addCompetitionsList() throws SQLException {
-        competitionsList = DbWorker.getAll();
+        competitionsList = competition.getAllList();
         data.addAll(competitionsList);
     }
     public void openNewWindow(String window){
